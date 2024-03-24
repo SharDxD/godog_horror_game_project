@@ -1,0 +1,158 @@
+[gd_scene load_steps=22 format=3 uid="uid://dbwmt1s4cwfg4"]
+
+[ext_resource type="Material" uid="uid://bte7uh4r6pb7a" path="res://materials/brickOrange/brick.tres" id="1_yelf4"]
+[ext_resource type="Script" path="res://scripts/CharacterBody3D_1.gd" id="2_uyfsr"]
+[ext_resource type="Script" path="res://scripts/EnemyBody3D2.gd" id="3_7xtgm"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s030d"]
+size = Vector3(2, 0.05, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibvpi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_parf8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1v1ov"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv6qg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5jlrn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v4jxq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5lc4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i4vit"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41ci6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gnwde"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f2y7t"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_01vnb"]
+
+[sub_resource type="Environment" id="Environment_lbpjv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqyua"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0f3ju"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oql7m"]
+radius = 0.3
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i6m2h"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshFloor" type="MeshInstance3D" parent="."]
+process_physics_priority = 1
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.3, 0)
+mesh = SubResource("BoxMesh_s030d")
+
+[node name="MeshWall1" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, 0, 2, 1, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_ibvpi")
+mesh = SubResource("BoxMesh_parf8")
+
+[node name="StaticBodyWall1" type="StaticBody3D" parent="MeshFloor/MeshWall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall1/StaticBodyWall1"]
+shape = SubResource("BoxShape3D_1v1ov")
+
+[node name="MeshWall2" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, 0, 2, -1, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_sv6qg")
+mesh = SubResource("BoxMesh_parf8")
+
+[node name="StaticBodyWall2" type="StaticBody3D" parent="MeshFloor/MeshWall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall2/StaticBodyWall2"]
+shape = SubResource("BoxShape3D_5jlrn")
+
+[node name="MeshWall3" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(-4.37114e-10, 0, 2, 0, 1, 0, -0.01, 0, -8.74228e-08, 0, 0.5, -1)
+material_override = SubResource("StandardMaterial3D_v4jxq")
+mesh = SubResource("BoxMesh_parf8")
+
+[node name="StaticBodyWall3" type="StaticBody3D" parent="MeshFloor/MeshWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.38778e-17, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall3/StaticBodyWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.38778e-17, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_v5lc4")
+
+[node name="MeshWall4" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(-4.37114e-10, 0, 2, 0, 1, 0, -0.01, 0, -8.74228e-08, 0, 0.5, 1)
+mesh = SubResource("BoxMesh_parf8")
+surface_material_override/0 = SubResource("StandardMaterial3D_i4vit")
+
+[node name="StaticBodyWall4" type="StaticBody3D" parent="MeshFloor/MeshWall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.38778e-17, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall4/StaticBodyWall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.38778e-17, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_41ci6")
+
+[node name="MeshBox3D" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(0.2, 0, 0, 0, 0.15, 0, 0, 0, 0.3, -0.836127, 0.15, 0.696975)
+mesh = SubResource("CylinderMesh_gnwde")
+surface_material_override/0 = ExtResource("1_yelf4")
+
+[node name="StaticBodyBox3D" type="StaticBody3D" parent="MeshFloor/MeshBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshBox3D/StaticBodyBox3D"]
+shape = SubResource("CylinderShape3D_f2y7t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshFloor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_01vnb")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lbpjv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.831227, 0, -0.555933, 0, 1, 0, 0.555933, 0, 0.831227, 1.35339, 12.9671, 10.575)
+light_angular_distance = 74.55
+directional_shadow_mode = 1
+
+[node name="Player_Spawn_Point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+disable_mode = 1
+safe_margin = 0.005
+script = ExtResource("2_uyfsr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_bqyua")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+fov = 90.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_0f3ju")
+
+[node name="EnemyBody3D2" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+script = ExtResource("3_7xtgm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody3D2"]
+shape = SubResource("CapsuleShape3D_oql7m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnemyBody3D2"]
+mesh = SubResource("CapsuleMesh_i6m2h")
+
+[node name="Area3D" type="Area3D" parent="EnemyBody3D2"]
+disable_mode = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyBody3D2/Area3D"]
+shape = SubResource("CapsuleShape3D_oql7m")
+
+[connection signal="body_entered" from="EnemyBody3D2/Area3D" to="CharacterBody3D" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="EnemyBody3D2/Area3D" to="EnemyBody3D2" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="EnemyBody3D2/Area3D" to="CharacterBody3D" method="_on_area_3d_body_exited"]
+[connection signal="body_exited" from="EnemyBody3D2/Area3D" to="EnemyBody3D2" method="_on_area_3d_body_exited"]
