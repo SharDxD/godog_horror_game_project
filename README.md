@@ -25,4 +25,14 @@ All of the in game mechanics will be presented in some sort of block
 schematic (they are now in development), as well as schemes of the levels
 and some rough 3d models of the objects.
 
+Software used:
+-Krita: https://krita.org/en/download/
+-Laigter: https://azagaya.itch.io/laigter
+-Blender: https://www.blender.org/download/
+-Godot: https://godotengine.org/download/macos/
+
+Some of the textures are taken from here:
+https://www.textures.com/free
+
+
 Kirill Golubev
