@@ -1,0 +1,140 @@
+[gd_scene load_steps=25 format=3 uid="uid://c26i3cmwyh7fd"]
+
+[ext_resource type="Material" uid="uid://bte7uh4r6pb7a" path="res://materials/brickOrange/brick.tres" id="1_1rxcj"]
+[ext_resource type="Texture2D" uid="uid://pqtbmktib2ib" path="res://materials/floor.png" id="1_8b8kq"]
+[ext_resource type="Texture2D" uid="uid://cwnoyo4vvkjje" path="res://materials/scratched_wall.png" id="1_ge2u0"]
+[ext_resource type="PackedScene" uid="uid://ccu1nhuue1qi" path="res://Scenes/basic_character_3d.tscn" id="2_k0nya"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7tssu"]
+size = Vector3(2, 0.05, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tq0co"]
+albedo_texture = ExtResource("1_8b8kq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obc2b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmwja"]
+albedo_texture = ExtResource("1_ge2u0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_xnydy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s1tsl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15gdv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44s3p"]
+albedo_texture = ExtResource("1_ge2u0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cgpel"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4s0d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d5pn"]
+albedo_texture = ExtResource("1_ge2u0")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ap00"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sguy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qsc5l"]
+albedo_texture = ExtResource("1_ge2u0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgqur"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqiju"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_au80h"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ltphf"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_tmtd1"]
+
+[sub_resource type="Environment" id="Environment_u8noc"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshFloor" type="MeshInstance3D" parent="."]
+process_physics_priority = 1
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.3, 0)
+mesh = SubResource("BoxMesh_7tssu")
+surface_material_override/0 = SubResource("StandardMaterial3D_tq0co")
+
+[node name="MeshWall1" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, 0, 2, 1, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_obc2b")
+material_overlay = SubResource("StandardMaterial3D_tmwja")
+mesh = SubResource("BoxMesh_xnydy")
+
+[node name="StaticBodyWall1" type="StaticBody3D" parent="MeshFloor/MeshWall1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall1/StaticBodyWall1"]
+shape = SubResource("BoxShape3D_s1tsl")
+
+[node name="MeshWall2" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(0.01, 0, 0, 0, 1, 0, 0, 0, 2, -1, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_15gdv")
+material_overlay = SubResource("StandardMaterial3D_44s3p")
+mesh = SubResource("BoxMesh_xnydy")
+
+[node name="StaticBodyWall2" type="StaticBody3D" parent="MeshFloor/MeshWall2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall2/StaticBodyWall2"]
+shape = SubResource("BoxShape3D_cgpel")
+
+[node name="MeshWall3" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(-4.37114e-10, 0, 2, 0, 1, 0, -0.01, 0, -8.74228e-08, 0, 0.5, -1)
+material_override = SubResource("StandardMaterial3D_f4s0d")
+material_overlay = SubResource("StandardMaterial3D_0d5pn")
+mesh = SubResource("BoxMesh_xnydy")
+
+[node name="StaticBodyWall3" type="StaticBody3D" parent="MeshFloor/MeshWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.38778e-17, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall3/StaticBodyWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.38778e-17, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_0ap00")
+
+[node name="MeshWall4" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(-4.37114e-10, 0, 2, 0, 1, 0, -0.01, 0, -8.74228e-08, 0, 0.5, 1)
+material_override = SubResource("StandardMaterial3D_0sguy")
+material_overlay = SubResource("StandardMaterial3D_qsc5l")
+mesh = SubResource("BoxMesh_xnydy")
+surface_material_override/0 = SubResource("StandardMaterial3D_vgqur")
+
+[node name="StaticBodyWall4" type="StaticBody3D" parent="MeshFloor/MeshWall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.38778e-17, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshWall4/StaticBodyWall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -1.38778e-17, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_lqiju")
+
+[node name="MeshBox3D" type="MeshInstance3D" parent="MeshFloor"]
+transform = Transform3D(0.2, 0, 0, 0, 0.15, 0, 0, 0, 0.3, -0.836127, 0.15, 0.696975)
+mesh = SubResource("CylinderMesh_au80h")
+surface_material_override/0 = ExtResource("1_1rxcj")
+
+[node name="StaticBodyBox3D" type="StaticBody3D" parent="MeshFloor/MeshBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/MeshBox3D/StaticBodyBox3D"]
+shape = SubResource("CylinderShape3D_ltphf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshFloor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshFloor/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_tmtd1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u8noc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.831227, 0, -0.555933, 0, 1, 0, 0.555933, 0, 0.831227, 1.35339, 12.9671, 10.575)
+visible = false
+light_angular_distance = 74.55
+directional_shadow_mode = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94998, 2.15606, 0)
+use_collision = true
+size = Vector3(7.55075, 1.74802, 1)
+
+[node name="Character_basic" parent="." instance=ExtResource("2_k0nya")]
