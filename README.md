@@ -26,7 +26,7 @@ schematic (they are now in development), as well as schemes of the levels
 and some rough 3d models of the objects.
 
 
-The up to date documentation file is accessible through: /Godot_prj_doc.pdf
+The up to date documentation file is accessible through: [/Godot_prj_doc.pdf](https://github.com/SharDxD/godog_horror_game_project/blob/a24d13d1859bb41c43298b3be939a5587a973469/Godot_prj_doc.pdf)
 
 
 Software used:
